@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<div>
+		<h1>Binary to Decimal</h1>
+		<div>
+			<label>Number to Convert</label>
+			<input type="text" id="inputToConvert1" maxlength=64></input>
+		</div>
+		<div>
+			<label>Converted Number</label>
+			<input type="text" id="outputToConvert1" disabled></input>
+		<div/>
+	</div>
+	<div>
+		<h1>Decimal to Binary</h1>
+		<div>
+			<label>Number to Convert</label>
+			<input type="text" id="inputToConvert2" maxlength=64></input>
+		</div>
+		<div>
+			<label>Converted Number</label>
+			<input type="text" id="outputToConvert2" disabled></input>
+		<div/>
+	</div>
+	<script>
+	function convertToDecimal(input) {
+    if (input === undefined)
+        return;
+    if (input === "")
+        return;
+    if (input.length === 0)
+        return;
+    if (/^[0-1]{1,}$/.test(input) === false)
+        return;
+    input_array = input.split('').reverse();
+
+    var sum = 0;
+
+    for (var i = 0; i < input_array.length; i++) {
+        sum += input_array[i] * Math.pow(2, i);
+    }
+    return sum;
+
+}
+
+function convertToBinary(input) {
+    if (input === undefined)
+        return;
+    if (input === "")
+        return;
+    if (input.length === 0)
+        return;
+    if (input.length == 0)
+        return 0;
+    if (/^[1-9]\d*$/.test(input) === false)
+        return;
+    var sum = 0;
+    output_array = [];
+    var complete = false;
+    var inputCopy = input;
+    while (true) {
+        if (inputCopy === 0)
+            break;
+        var val_to_push = (parseInt(inputCopy) % 2 === 0) ? 0 : 1;
+        output_array.push(val_to_push);
+        inputCopy = Math.floor(inputCopy / 2);
+    }
+    return output_array.reverse().join("");
+}
+$("#inputToConvert1").keyup(function() {
+    $("#outputToConvert1").val(convertToDecimal($("#inputToConvert1").val()));
+});
+$("#inputToConvert2").keyup(function() {
+    $("#outputToConvert2").val(convertToBinary($("#inputToConvert2").val()));
+});
+	</script>
+</html>
