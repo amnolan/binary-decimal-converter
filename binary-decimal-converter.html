@@ -25,55 +25,55 @@
 		<div/>
 	</div>
 	<script>
-function convertToDecimal(input) {
-    if (input === undefined)
-        return;
-    if (input === "")
-        return;
-    if (input.length === 0)
-        return;
-    if (/^[0-1]{1,}$/.test(input) === false)
-        return;
-    input_array = input.split('').reverse();
+		function convertToDecimal(input) {
+		    if (input === undefined)
+			return;
+		    if (input === "")
+			return;
+		    if (input.length === 0)
+			return;
+		    if (/^[0-1]{1,}$/.test(input) === false)
+			return;
+		    input_array = input.split('').reverse();
 
-    var sum = 0;
+		    var sum = 0;
 
-    for (var i = 0; i < input_array.length; i++) {
-        sum += input_array[i] * Math.pow(2, i);
-    }
-    return sum;
+		    for (var i = 0; i < input_array.length; i++) {
+			sum += input_array[i] * Math.pow(2, i);
+		    }
+		    return sum;
 
-}
+		}
 
-function convertToBinary(input) {
-    if (input === undefined)
-        return;
-    if (input === "")
-        return;
-    if (input.length === 0)
-        return;
-    if (input.length == 0)
-        return 0;
-    if (/^[1-9]\d*$/.test(input) === false)
-        return;
-    var sum = 0;
-    output_array = [];
-    var complete = false;
-    var inputCopy = input;
-    while (true) {
-        if (inputCopy === 0)
-            break;
-        var val_to_push = (parseInt(inputCopy) % 2 === 0) ? 0 : 1;
-        output_array.push(val_to_push);
-        inputCopy = Math.floor(inputCopy / 2);
-    }
-    return output_array.reverse().join("");
-}
-$("#inputToConvert1").keyup(function() {
-    $("#outputToConvert1").val(convertToDecimal($("#inputToConvert1").val()));
-});
-$("#inputToConvert2").keyup(function() {
-    $("#outputToConvert2").val(convertToBinary($("#inputToConvert2").val()));
-});
+		function convertToBinary(input) {
+		    if (input === undefined)
+			return;
+		    if (input === "")
+			return;
+		    if (input.length === 0)
+			return;
+		    if (input.length == 0)
+			return 0;
+		    if (/^[1-9]\d*$/.test(input) === false)
+			return;
+		    var sum = 0;
+		    output_array = [];
+		    var complete = false;
+		    var inputCopy = input;
+		    while (true) {
+			if (inputCopy === 0)
+			    break;
+			var val_to_push = (parseInt(inputCopy) % 2 === 0) ? 0 : 1;
+			output_array.push(val_to_push);
+			inputCopy = Math.floor(inputCopy / 2);
+		    }
+		    return output_array.reverse().join("");
+		}
+		$("#inputToConvert1").keyup(function() {
+		    $("#outputToConvert1").val(convertToDecimal($("#inputToConvert1").val()));
+		});
+		$("#inputToConvert2").keyup(function() {
+		    $("#outputToConvert2").val(convertToBinary($("#inputToConvert2").val()));
+		});
 	</script>
 </html>
